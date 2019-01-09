@@ -356,8 +356,9 @@ func getOauthClient(args cli.Arguments) (*http.Client, error) {
 	configDir := getConfigDir(args)
 
 	if args.String("serviceAccount") != "" {
+		role := args.String("assumeRole")
 		serviceAccountPath := ConfigFilePath(configDir, args.String("serviceAccount"))
-		serviceAccountClient, err := auth.NewServiceAccountClient(serviceAccountPath)
+		serviceAccountClient, err := auth.NewServiceAccountClient(serviceAccountPath, role)
 		if err != nil {
 			return nil, err
 		}

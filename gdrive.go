@@ -45,6 +45,11 @@ func main() {
 			Patterns:    []string{"--service-account"},
 			Description: "Oauth service account filename, used for server to server communication without user interaction (filename path is relative to config dir)",
 		},
+		cli.StringFlag{
+			Name:        "assumeRole",
+			Patterns:    []string{"--assume-role"},
+			Description: "Assume role to",
+		},
 	}
 
 	handlers := []*cli.Handler{
